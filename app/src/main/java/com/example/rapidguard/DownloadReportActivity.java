@@ -1,5 +1,6 @@
 package com.example.rapidguard;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -96,6 +97,7 @@ public class DownloadReportActivity extends AppCompatActivity {
     }
 
     /** Open email client pre-filled with report details */
+    @SuppressLint("QueryPermissionsNeeded")
     private void sendToEmail() {
         Intent email = new Intent(Intent.ACTION_SENDTO);
         email.setData(Uri.parse("mailto:"));

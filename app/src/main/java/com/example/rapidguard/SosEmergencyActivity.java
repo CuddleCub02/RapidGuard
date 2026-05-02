@@ -1,5 +1,6 @@
 package com.example.rapidguard;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -24,7 +25,7 @@ public class SosEmergencyActivity extends AppCompatActivity {
 
     private CardView btnSOS;
     private View pulseRing1, pulseRing2, pulseRing3;
-    private TextView tvLocationStatus, tvSOSButtonText, tvHoldHint;
+    private TextView tvLocationStatus;
     private android.widget.ProgressBar holdProgressBar;
     private ChipGroup chipGroup;
 
@@ -51,8 +52,8 @@ public class SosEmergencyActivity extends AppCompatActivity {
         pulseRing2      = findViewById(R.id.pulseRing2);
         pulseRing3      = findViewById(R.id.pulseRing3);
         tvLocationStatus = findViewById(R.id.tvLocationStatus);
-        tvSOSButtonText = findViewById(R.id.tvSOSButtonText);
-        tvHoldHint      = findViewById(R.id.tvHoldHint);
+        findViewById(R.id.tvSOSButtonText);
+        findViewById(R.id.tvHoldHint);
         holdProgressBar = findViewById(R.id.holdProgressBar);
         chipGroup       = findViewById(R.id.chipGroupEmergencyType);
     }
@@ -66,6 +67,7 @@ public class SosEmergencyActivity extends AppCompatActivity {
     }
 
     /** Hold-to-send: 3-second press triggers alert dispatch */
+    @SuppressLint("ClickableViewAccessibility")
     private void setupSOSHoldButton() {
         btnSOS.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
@@ -87,7 +89,9 @@ public class SosEmergencyActivity extends AppCompatActivity {
     }
 
     private void startHoldTimer() {
-        vibrateShort();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrateShort();
+        }
         holdProgressBar.setVisibility(View.VISIBLE);
         holdProgressBar.setProgress(0);
 
@@ -141,17 +145,17 @@ public class SosEmergencyActivity extends AppCompatActivity {
 
     /** Animate 3 concentric pulse rings */
     private void setupPulseAnimations() {
-        startPulse(pulseRing1, 0,    2200);
-        startPulse(pulseRing2, 600,  2200);
-        startPulse(pulseRing3, 1200, 2200);
+        startPulse(pulseRing1, 0);
+        startPulse(pulseRing2, 600);
+        startPulse(pulseRing3, 1200);
     }
 
-    private void startPulse(View ring, long delay, long duration) {
+    private void startPulse(View ring, long delay) {
         ScaleAnimation scale = new ScaleAnimation(
                 0.88f, 1.12f, 0.88f, 1.12f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
-        scale.setDuration(duration);
+        scale.setDuration(2200);
         scale.setStartOffset(delay);
         scale.setRepeatCount(Animation.INFINITE);
         scale.setRepeatMode(Animation.REVERSE);
@@ -160,9 +164,7 @@ public class SosEmergencyActivity extends AppCompatActivity {
 
     /** Simulate GPS acquiring then locking */
     private void simulateLocationAcquire() {
-        new android.os.Handler().postDelayed(() -> {
-            tvLocationStatus.setText(getString(R.string.sos_location_locked));
-        }, 2000);
+        new android.os.Handler().postDelayed(() -> tvLocationStatus.setText(getString(R.string.sos_location_locked)), 2000);
     }
 
     private void setupCallButton() {
@@ -175,7 +177,6 @@ public class SosEmergencyActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    @SuppressWarnings("deprecation")
     private void vibrateShort() {
         Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         if (v != null && v.hasVibrator()) {
@@ -184,12 +185,13 @@ public class SosEmergencyActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressWarnings("deprecation")
     private void vibrateAlert() {
         Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         if (v != null && v.hasVibrator()) {
             long[] pattern = {0, 200, 100, 200, 100, 400};
-            v.vibrate(VibrationEffect.createWaveform(pattern, -1));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createWaveform(pattern, -1));
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private MaterialButton btnSendReset;
     private CardView cardSuccess;
     private TextView tvResendTimer, tvResendLink;
+    
 
     private static final long RESEND_DELAY_MS = 60_000L;
     private CountDownTimer countDownTimer;

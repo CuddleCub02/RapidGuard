@@ -1,5 +1,6 @@
 package com.example.rapidguard;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -98,6 +99,7 @@ public class NearbyServicesActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private void bindCard(View card, ServiceItem item) {
         android.widget.ImageView ivIcon =
                 card.findViewById(R.id.ivServiceIcon);

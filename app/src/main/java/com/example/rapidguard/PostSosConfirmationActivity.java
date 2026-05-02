@@ -3,7 +3,6 @@ package com.example.rapidguard;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.Animation;
@@ -17,10 +16,8 @@ import java.util.Random;
 
 public class PostSosConfirmationActivity extends AppCompatActivity {
 
-    private View heroPulse1, heroPulse2;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_sos_confirmation);
 
@@ -54,8 +51,8 @@ public class PostSosConfirmationActivity extends AppCompatActivity {
 
     /** Animate green pulse rings around hero check icon */
     private void setupPulseAnimation() {
-        heroPulse1 = findViewById(R.id.heroPulse1);
-        heroPulse2 = findViewById(R.id.heroPulse2);
+        View heroPulse1 = findViewById(R.id.heroPulse1);
+        View heroPulse2 = findViewById(R.id.heroPulse2);
         startPulse(heroPulse1, 0);
         startPulse(heroPulse2, 700);
     }

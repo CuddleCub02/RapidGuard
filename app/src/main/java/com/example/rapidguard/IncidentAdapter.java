@@ -1,6 +1,6 @@
 package com.example.rapidguard;
 
-import android.content.res.ColorStateList;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ public class IncidentAdapter
         extends RecyclerView.Adapter<IncidentAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
-        void onClick(com.example.rapidguard.IncidentItem item);
+        void onClick(IncidentItem item);
     }
 
     private List<IncidentItem> items;
@@ -27,12 +27,14 @@ public class IncidentAdapter
         this.listener = listener;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void updateData(List<IncidentItem> newItems) {
         this.items = newItems;
         notifyDataSetChanged();
     }
 
-    @NonNull @Override
+    @NonNull
+    @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int type) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_incident_card, parent, false);
@@ -42,6 +44,7 @@ public class IncidentAdapter
     @Override
     public void onBindViewHolder(@NonNull ViewHolder h, int pos) {
         IncidentItem item = items.get(pos);
+
         h.ivIcon.setImageResource(item.iconRes);
         h.tvType.setText(item.type);
         h.tvDateTime.setText(item.dateTime);
@@ -64,6 +67,7 @@ public class IncidentAdapter
             default:
                 statusColor = R.color.status_danger;
                 statusBg    = R.drawable.bg_status_danger;
+                break;
         }
         h.tvStatus.setTextColor(
                 ContextCompat.getColor(h.itemView.getContext(), statusColor));
@@ -84,6 +88,7 @@ public class IncidentAdapter
             default:
                 riskColor = R.color.status_danger;
                 riskBg    = R.drawable.bg_status_danger;
+                break;
         }
         h.tvRisk.setTextColor(
                 ContextCompat.getColor(h.itemView.getContext(), riskColor));
@@ -92,13 +97,17 @@ public class IncidentAdapter
         h.itemView.setOnClickListener(v -> listener.onClick(item));
     }
 
-    @Override public int getItemCount() { return items.size(); }
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    // ✅ FIX: must be PUBLIC so RecyclerView can access it externally
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivIcon;
-        TextView tvType, tvDateTime, tvLocation, tvStatus, tvRisk;
+        TextView  tvType, tvDateTime, tvLocation, tvStatus, tvRisk;
 
-        ViewHolder(View v) {
+        public ViewHolder(@NonNull View v) {
             super(v);
             ivIcon     = v.findViewById(R.id.ivIncidentIcon);
             tvType     = v.findViewById(R.id.tvIncidentType);

@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private View pulseRing1, pulseRing2;
     private final Handler pulseHandler = new Handler();
 
     @Override
@@ -48,8 +47,8 @@ public class HomeActivity extends AppCompatActivity {
 
     /** Animate pulse rings on the SOS button */
     private void setupPulseAnimation() {
-        pulseRing1 = findViewById(R.id.pulseRing1);
-        pulseRing2 = findViewById(R.id.pulseRing2);
+        View pulseRing1 = findViewById(R.id.pulseRing1);
+        View pulseRing2 = findViewById(R.id.pulseRing2);
         startPulse(pulseRing1, 0);
         startPulse(pulseRing2, 1000);
     }
