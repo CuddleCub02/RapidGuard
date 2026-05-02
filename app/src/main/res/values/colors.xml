@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RapidGuard</string>
+    <string name="app_name_display">RapidGuard</string>
+    <string name="group_badge">Group 41</string>
+
+    <!-- Splash screen -->
+    <string name="splash_tagline">Your safety, our mission\nEmergency response, redefined</string>
+    <string name="splash_no_login_note">SOS available without an account</string>
+
+    <!-- Buttons -->
+    <string name="btn_sos_emergency">Emergency SOS — No Login Needed</string>
+    <string name="btn_get_started">Get Started</string>
+    <string name="btn_login">Log In</string>
+
+    <!-- Feature chips -->
+    <string name="chip_sos">Fast SOS</string>
+    <string name="chip_gps">GPS Track</string>
+    <string name="chip_responders">Responders</string>
+    <string name="chip_reports">Reports</string>
+
+    <!-- Content descriptions (accessibility) -->
+    <string name="cd_shield_logo">RapidGuard shield logo</string>
+    <string name="cd_sos_icon">SOS emergency icon</string>
+    <string name="cd_gps_icon">GPS tracking icon</string>
+    <string name="cd_responders_icon">Responders icon</string>
+    <string name="cd_reports_icon">Reports icon</string>
+    <color name="sos_core_red">#F44336</color>
+    <color name="white">#DAD3D2</color>
+    <color name="status_success">#4CAF50</color>
+    <color name="status_warning">#FFC107</color>
+    <color name="status_danger">#F44336</color>
+</resources>

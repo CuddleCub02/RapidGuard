@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 13: Nearby Services / Map Screen | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nearbyRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_radial"
+    tools:context=".NearbyServicesActivity">
+
+    <!-- Grid overlay -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.04"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ===== MAP PLACEHOLDER (top half) ===== -->
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/card_dark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.46">
+
+        <!-- SupportMapFragment at runtime -->
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_map_placeholder" />
+
+        <!-- Map grid texture -->
+        <View
+            android:id="@+id/mapTexture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_grid_overlay"
+            android:alpha="0.06" />
+
+        <!-- Back button over map -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@drawable/bg_card_dark"
+            android:contentDescription="@string/cd_back"
+            android:padding="@dimen/spacing_sm"
+            android:layout_gravity="top|start"
+            android:layout_margin="@dimen/spacing_lg"
+            android:layout_marginTop="48dp" />
+
+        <!-- Screen label pill over map -->
+        <TextView
+            android:id="@+id/tvMapLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nearby_map_label"
+            android:textSize="@dimen/text_micro"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_card_dark"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:paddingTop="@dimen/spacing_xs"
+            android:paddingBottom="@dimen/spacing_xs"
+            android:layout_gravity="top|end"
+            android:layout_margin="@dimen/spacing_lg"
+            android:layout_marginTop="56dp" />
+
+        <!-- Service type filter chips over map -->
+        <HorizontalScrollView
+            android:id="@+id/mapChipScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/spacing_md">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupServiceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_all"
+                    android:checked="true"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/rim_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPolice"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_police"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/rim_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHospital"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_hospital"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/rim_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFireStation"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_fire"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/rim_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEMS"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_ems"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/rim_border"
+                    app:chipStrokeWidth="1dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+    </FrameLayout>
+
+    <!-- ===== SERVICES LIST (bottom half) ===== -->
+    <ScrollView
+        android:id="@+id/servicesScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="false"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/bottom_nav_height"
+        app:layout_constraintTop_toBottomOf="@id/mapContainer"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:paddingTop="@dimen/spacing_lg"
+            android:paddingBottom="@dimen/spacing_lg">
+
+            <!-- Section heading row -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md">
+
+                <TextView
+                    android:id="@+id/tvNearbyLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_section_label"
+                    android:textSize="@dimen/text_caption"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/text_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvResultCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nearby_result_count"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_muted"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== SERVICE CARD: Police Station ===== -->
+            <include
+                android:id="@+id/cardPolice"
+                layout="@layout/item_nearby_service_card" />
+
+            <!-- ===== SERVICE CARD: Hospital ===== -->
+            <include
+                android:id="@+id/cardHospital"
+                layout="@layout/item_nearby_service_card" />
+
+            <!-- ===== SERVICE CARD: Fire Station ===== -->
+            <include
+                android:id="@+id/cardFireStation"
+                layout="@layout/item_nearby_service_card" />
+
+            <!-- ===== SERVICE CARD: EMS ===== -->
+            <include
+                android:id="@+id/cardEMS"
+                layout="@layout/item_nearby_service_card" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@drawable/bg_nav_background"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemActiveIndicatorColor="@color/nav_active_indicator"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 5: Client Home Dashboard | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_radial"
+    tools:context=".HomeActivity">
+
+    <!-- Grid overlay -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.04"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Scrollable main content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/bottom_nav_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:paddingBottom="@dimen/spacing_xl">
+
+            <!-- ===== TOP BAR ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/spacing_xxl">
+
+                <!-- Avatar / profile initial -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvAvatar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="@color/card_inner_glow"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvAvatarInitial"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/home_avatar_initial"
+                        android:textSize="@dimen/text_button"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/white"
+                        android:gravity="center" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Greeting text -->
+                <LinearLayout
+                    android:id="@+id/greetingGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/spacing_md"
+                    app:layout_constraintTop_toTopOf="@id/cvAvatar"
+                    app:layout_constraintBottom_toBottomOf="@id/cvAvatar"
+                    app:layout_constraintStart_toEndOf="@id/cvAvatar"
+                    app:layout_constraintEnd_toStartOf="@id/btnNotification">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_greeting"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted" />
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_user_name"
+                        android:textSize="@dimen/text_button"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <!-- Notification bell -->
+                <ImageButton
+                    android:id="@+id/btnNotification"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_bell"
+                    android:background="@drawable/bg_card_dark"
+                    android:contentDescription="@string/cd_notifications"
+                    android:padding="@dimen/spacing_sm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Notification dot -->
+                <View
+                    android:id="@+id/notificationDot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/bg_dot_red"
+                    app:layout_constraintTop_toTopOf="@id/btnNotification"
+                    app:layout_constraintEnd_toEndOf="@id/btnNotification"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== RISK LEVEL CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRiskLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Left: risk info -->
+                    <TextView
+                        android:id="@+id/tvRiskLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_risk_label"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/text_muted"
+                        android:letterSpacing="0.08"
+                        android:textAllCaps="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvRiskLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_risk_level"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/status_warning"
+                        app:layout_constraintTop_toBottomOf="@id/tvRiskLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    <TextView
+                        android:id="@+id/tvRiskDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_risk_description"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted"
+                        android:lineSpacingMultiplier="1.4"
+                        app:layout_constraintTop_toBottomOf="@id/tvRiskLevel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/riskGauge"
+                        android:layout_marginTop="@dimen/spacing_xs"
+                        android:layout_marginEnd="@dimen/spacing_md" />
+
+                    <!-- Right: gauge placeholder -->
+                    <ImageView
+                        android:id="@+id/riskGauge"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_risk_gauge"
+                        android:contentDescription="@string/cd_risk_gauge"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Risk badge -->
+                    <TextView
+                        android:id="@+id/tvRiskBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_risk_badge"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/status_warning"
+                        android:background="@drawable/bg_status_warning"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingTop="@dimen/spacing_xxs"
+                        android:paddingBottom="@dimen/spacing_xxs"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/riskGauge"
+                        android:layout_marginEnd="@dimen/spacing_md"
+                        android:layout_marginTop="@dimen/spacing_sm" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== LARGE SOS BUTTON ===== -->
+            <TextView
+                android:id="@+id/tvSOSHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_sos_hint"
+                android:textSize="@dimen/text_micro"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/text_muted"
+                android:letterSpacing="0.08"
+                android:textAllCaps="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <!-- SOS button container with pulse rings -->
+            <FrameLayout
+                android:id="@+id/sosContainer"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <!-- Pulse ring 1 -->
+                <View
+                    android:id="@+id/pulseRing1"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/bg_sos_pulse_ring"
+                    android:alpha="0.12"
+                    android:layout_gravity="center" />
+
+                <!-- Pulse ring 2 -->
+                <View
+                    android:id="@+id/pulseRing2"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:background="@drawable/bg_sos_pulse_ring"
+                    android:alpha="0.20"
+                    android:layout_gravity="center" />
+
+                <!-- Main SOS button -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnSOSMain"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/sos_core_red"
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_sos_text"
+                            android:textSize="28sp"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textColor="@color/white"
+                            android:letterSpacing="0.05" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_sos_sub"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="rgba(255,255,255,0.7)"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <!-- ===== QUICK ACTIONS GRID ===== -->
+            <TextView
+                android:id="@+id/tvQuickActionsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_quick_actions"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_light"
+                android:letterSpacing="0.06"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <!-- 2x2 Quick action grid -->
+            <GridLayout
+                android:id="@+id/quickActionsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:layout_marginTop="@dimen/spacing_md">
+
+                <!-- Card 1: Report Incident -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardReportIncident"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="@dimen/spacing_xs"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="@dimen/card_radius_md"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_lg">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_report"
+                            android:contentDescription="@string/cd_report_icon"
+                            android:layout_marginBottom="@dimen/spacing_sm" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_report"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_report_sub"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card 2: Nearby Services -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardNearbyServices"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="@dimen/spacing_xs"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="@dimen/card_radius_md"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_lg">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_map_pin"
+                            android:contentDescription="@string/cd_nearby_icon"
+                            android:layout_marginBottom="@dimen/spacing_sm" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_nearby"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_nearby_sub"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card 3: Incident History -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardIncidentHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="@dimen/spacing_xs"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="@dimen/card_radius_md"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_lg">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_history"
+                            android:contentDescription="@string/cd_history_icon"
+                            android:layout_marginBottom="@dimen/spacing_sm" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_history"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_history_sub"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card 4: Safety Tips -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSafetyTips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="@dimen/spacing_xs"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="@dimen/card_radius_md"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_lg">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_shield_tip"
+                            android:contentDescription="@string/cd_tips_icon"
+                            android:layout_marginBottom="@dimen/spacing_sm" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_tips"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quick_tips_sub"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+            <!-- ===== RECENT INCIDENT CARD ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl">
+
+                <TextView
+                    android:id="@+id/tvRecentLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_recent_label"
+                    android:textSize="@dimen/text_caption"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/text_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_view_all"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/sos_core_red"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Recent incident card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRecentIncident"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Incident type icon -->
+                    <ImageView
+                        android:id="@+id/ivIncidentType"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_incident_medical"
+                        android:contentDescription="@string/cd_incident_type"
+                        android:background="@drawable/bg_icon_circle_red"
+                        android:padding="@dimen/spacing_sm"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <!-- Incident info -->
+                    <TextView
+                        android:id="@+id/tvIncidentType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recent_incident_type"
+                        android:textSize="@dimen/text_caption"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toTopOf="@id/ivIncidentType"
+                        app:layout_constraintStart_toEndOf="@id/ivIncidentType"
+                        app:layout_constraintEnd_toStartOf="@id/tvIncidentStatus"
+                        android:layout_marginStart="@dimen/spacing_md" />
+
+                    <TextView
+                        android:id="@+id/tvIncidentDateTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recent_incident_datetime"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted"
+                        app:layout_constraintTop_toBottomOf="@id/tvIncidentType"
+                        app:layout_constraintStart_toEndOf="@id/ivIncidentType"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    <!-- Status badge -->
+                    <TextView
+                        android:id="@+id/tvIncidentStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recent_incident_status"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/status_success"
+                        android:background="@drawable/bg_status_success"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingTop="@dimen/spacing_xxs"
+                        android:paddingBottom="@dimen/spacing_xxs"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@drawable/bg_nav_background"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemActiveIndicatorColor="@color/nav_active_indicator"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

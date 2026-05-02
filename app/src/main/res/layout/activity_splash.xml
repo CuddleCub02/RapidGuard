@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 1: Splash / Welcome Screen | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_radial"
+    tools:context=".SplashActivity">
+
+    <!-- Grid overlay texture (low-opacity) -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.04"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Pulse ring outer -->
+    <View
+        android:id="@+id/pulseRingOuter"
+        android:layout_width="@dimen/pulse_ring_outer_size"
+        android:layout_height="@dimen/pulse_ring_outer_size"
+        android:background="@drawable/bg_pulse_ring"
+        android:alpha="0.07"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/shieldIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Pulse ring inner -->
+    <View
+        android:id="@+id/pulseRingInner"
+        android:layout_width="@dimen/pulse_ring_inner_size"
+        android:layout_height="@dimen/pulse_ring_inner_size"
+        android:background="@drawable/bg_pulse_ring"
+        android:alpha="0.12"
+        app:layout_constraintTop_toTopOf="@id/pulseRingOuter"
+        app:layout_constraintBottom_toBottomOf="@id/pulseRingOuter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Shield icon / logo mark -->
+    <ImageView
+        android:id="@+id/shieldIcon"
+        android:layout_width="@dimen/shield_size"
+        android:layout_height="@dimen/shield_size"
+        android:src="@drawable/ic_shield_sos"
+        android:contentDescription="@string/cd_shield_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAppName"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="@dimen/spacing_xxl"
+        android:layout_marginBottom="@dimen/spacing_lg" />
+
+    <!-- "RapidGuard" brand name -->
+    <!-- Uses a SpannableString in code: "Rapid"=white, "Guard"=red -->
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name_display"
+        android:textSize="@dimen/text_brand"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="@color/white"
+        android:letterSpacing="-0.03"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/shieldIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvTagline"
+        android:layout_marginBottom="@dimen/spacing_xs" />
+
+    <!-- Safety tagline -->
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splash_tagline"
+        android:textSize="@dimen/text_caption"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/text_muted"
+        android:letterSpacing="0.08"
+        android:textAllCaps="true"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/redDivider"
+        android:layout_marginBottom="@dimen/spacing_lg" />
+
+    <!-- Red accent divider -->
+    <View
+        android:id="@+id/redDivider"
+        android:layout_width="@dimen/divider_width"
+        android:layout_height="@dimen/divider_height"
+        android:background="@drawable/bg_red_divider"
+        app:layout_constraintTop_toBottomOf="@id/tvTagline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/featureChipsGroup"
+        android:layout_marginBottom="@dimen/spacing_xl" />
+
+    <!-- Feature chips row -->
+    <LinearLayout
+        android:id="@+id/featureChipsGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        app:layout_constraintTop_toBottomOf="@id/redDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnSOS">
+
+        <!-- Chip: Fast SOS -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            app:cardBackgroundColor="@color/card_dark"
+            app:cardCornerRadius="@dimen/card_radius_sm"
+            app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/spacing_sm">
+                <ImageView
+                    android:layout_width="@dimen/chip_icon_size"
+                    android:layout_height="@dimen/chip_icon_size"
+                    android:src="@drawable/ic_sos_chip"
+                    android:contentDescription="@string/cd_sos_icon" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_sos"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/text_muted"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xxs" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Chip: GPS Track -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_xxs"
+            android:layout_marginEnd="@dimen/spacing_xxs"
+            app:cardBackgroundColor="@color/card_dark"
+            app:cardCornerRadius="@dimen/card_radius_sm"
+            app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/spacing_sm">
+                <ImageView
+                    android:layout_width="@dimen/chip_icon_size"
+                    android:layout_height="@dimen/chip_icon_size"
+                    android:src="@drawable/ic_gps_chip"
+                    android:contentDescription="@string/cd_gps_icon" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_gps"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/text_muted"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xxs" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Chip: Responders -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_xxs"
+            android:layout_marginEnd="@dimen/spacing_xxs"
+            app:cardBackgroundColor="@color/card_dark"
+            app:cardCornerRadius="@dimen/card_radius_sm"
+            app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/spacing_sm">
+                <ImageView
+                    android:layout_width="@dimen/chip_icon_size"
+                    android:layout_height="@dimen/chip_icon_size"
+                    android:src="@drawable/ic_responders_chip"
+                    android:contentDescription="@string/cd_responders_icon" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_responders"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/text_muted"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xxs" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Chip: Reports -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:cardBackgroundColor="@color/card_dark"
+            app:cardCornerRadius="@dimen/card_radius_sm"
+            app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/spacing_sm">
+                <ImageView
+                    android:layout_width="@dimen/chip_icon_size"
+                    android:layout_height="@dimen/chip_icon_size"
+                    android:src="@drawable/ic_reports_chip"
+                    android:contentDescription="@string/cd_reports_icon" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_reports"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/text_muted"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xxs" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- SOS Emergency Button (no login required) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSOS"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height_lg"
+        android:text="@string/btn_sos_emergency"
+        android:textSize="@dimen/text_button"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/sos_core_red"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        android:layout_marginTop="@dimen/spacing_xl"
+        app:cornerRadius="@dimen/btn_radius"
+        app:icon="@drawable/ic_sos_bolt"
+        app:iconTint="@color/white"
+        app:iconGravity="textStart"
+        app:layout_constraintTop_toBottomOf="@id/featureChipsGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnRow" />
+
+    <!-- Get Started + Login row -->
+    <LinearLayout
+        android:id="@+id/btnRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        android:layout_marginTop="@dimen/spacing_sm"
+        app:layout_constraintTop_toBottomOf="@id/btnSOS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvNoLoginNote">
+
+        <!-- Get Started -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGetStarted"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_height_md"
+            android:layout_weight="2"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:text="@string/btn_get_started"
+            android:textSize="@dimen/text_button"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/card_mid"
+            app:cornerRadius="@dimen/btn_radius"
+            app:strokeColor="@color/rim_border"
+            app:strokeWidth="1dp" />
+
+        <!-- Login -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_height_md"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_xs"
+            android:text="@string/btn_login"
+            android:textSize="@dimen/text_button"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/text_muted"
+            app:cornerRadius="@dimen/btn_radius"
+            app:strokeColor="@color/text_muted"
+            app:strokeWidth="1dp" />
+
+    </LinearLayout>
+
+    <!-- No-login note with green dot indicator -->
+    <LinearLayout
+        android:id="@+id/tvNoLoginNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/spacing_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRow">
+
+        <!-- Blinking green dot -->
+        <View
+            android:id="@+id/dotGreen"
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:background="@drawable/bg_dot_green"
+            android:layout_marginEnd="@dimen/spacing_xs" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/splash_no_login_note"
+            android:textSize="@dimen/text_micro"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/text_muted" />
+
+    </LinearLayout>
+
+    <!-- Group badge -->
+    <TextView
+        android:id="@+id/tvGroupBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/group_badge"
+        android:textSize="@dimen/text_micro"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/text_muted"
+        android:background="@drawable/bg_badge_dark"
+        android:paddingStart="@dimen/spacing_sm"
+        android:paddingEnd="@dimen/spacing_sm"
+        android:paddingTop="@dimen/spacing_xxs"
+        android:paddingBottom="@dimen/spacing_xxs"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

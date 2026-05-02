@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 6: SOS Emergency Screen | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sosRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_base"
+    tools:context=".SosEmergencyActivity">
+
+    <!-- Full-screen dark red radial glow behind SOS button -->
+    <View
+        android:id="@+id/sosGlowBg"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:background="@drawable/bg_sos_glow"
+        android:alpha="0.18"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp" />
+
+    <!-- Grid overlay -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.03"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Top bar: back + no-login badge -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_back"
+        android:background="@drawable/bg_card_dark"
+        android:contentDescription="@string/cd_back"
+        android:padding="@dimen/spacing_sm"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/spacing_xxl"
+        android:layout_marginStart="@dimen/spacing_lg" />
+
+    <!-- No-login pill badge top right -->
+    <TextView
+        android:id="@+id/tvNoLoginBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sos_no_login_badge"
+        android:textSize="@dimen/text_micro"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/status_success"
+        android:background="@drawable/bg_status_success"
+        android:paddingStart="@dimen/spacing_md"
+        android:paddingEnd="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_xs"
+        android:paddingBottom="@dimen/spacing_xs"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/spacing_lg" />
+
+    <!-- ===== SECTION: TOP INFO ===== -->
+
+    <!-- App name small -->
+    <TextView
+        android:id="@+id/tvAppNameSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name_display"
+        android:textSize="@dimen/text_caption"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/text_muted"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_xl"
+        android:gravity="center" />
+
+    <!-- Main emergency heading -->
+    <TextView
+        android:id="@+id/tvEmergencyHeading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sos_heading"
+        android:textSize="22sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        app:layout_constraintTop_toBottomOf="@id/tvAppNameSmall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_lg" />
+
+    <!-- Sub instruction -->
+    <TextView
+        android:id="@+id/tvSOSInstruction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sos_instruction"
+        android:textSize="@dimen/text_caption"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/text_muted"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvEmergencyHeading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginStart="@dimen/spacing_xl"
+        android:layout_marginEnd="@dimen/spacing_xl" />
+
+    <!-- ===== SECTION: SOS BUTTON ===== -->
+
+    <!-- Pulse ring 3 (outermost) -->
+    <View
+        android:id="@+id/pulseRing3"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/bg_sos_pulse_ring"
+        android:alpha="0.06"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp" />
+
+    <!-- Pulse ring 2 -->
+    <View
+        android:id="@+id/pulseRing2"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:background="@drawable/bg_sos_pulse_ring"
+        android:alpha="0.10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp" />
+
+    <!-- Pulse ring 1 (innermost) -->
+    <View
+        android:id="@+id/pulseRing1"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/bg_sos_pulse_ring"
+        android:alpha="0.18"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp" />
+
+    <!-- Main SOS circular button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnSOSHold"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/sos_core_red"
+        app:cardCornerRadius="70dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/spacing_md">
+
+            <!-- SOS text -->
+            <TextView
+                android:id="@+id/tvSOSButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_sos_text"
+                android:textSize="36sp"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="@color/white"
+                android:letterSpacing="0.05"
+                android:gravity="center" />
+
+            <!-- Hold hint below SOS text -->
+            <TextView
+                android:id="@+id/tvHoldHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_hold_hint"
+                android:textSize="@dimen/text_micro"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="rgba(255,255,255,0.65)"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Hold progress arc (shown during hold) -->
+    <ProgressBar
+        android:id="@+id/holdProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:indeterminate="false"
+        android:progress="0"
+        android:max="100"
+        android:progressDrawable="@drawable/bg_sos_progress_ring"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp" />
+
+    <!-- ===== SECTION: LOCATION STATUS ===== -->
+
+    <!-- Location capture card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        app:cardBackgroundColor="@color/card_dark"
+        app:cardCornerRadius="@dimen/card_radius_md"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/btnSOSHold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_xl">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_md">
+
+            <!-- GPS icon -->
+            <ImageView
+                android:id="@+id/ivGPS"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_gps_chip"
+                android:contentDescription="@string/cd_gps_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Location text -->
+            <TextView
+                android:id="@+id/tvLocationStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_location_acquiring"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivGPS"
+                app:layout_constraintEnd_toStartOf="@id/tvLocationAccuracy"
+                android:layout_marginStart="@dimen/spacing_sm" />
+
+            <TextView
+                android:id="@+id/tvLocationSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_location_sub"
+                android:textSize="@dimen/text_micro"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/text_muted"
+                app:layout_constraintTop_toBottomOf="@id/tvLocationStatus"
+                app:layout_constraintStart_toEndOf="@id/ivGPS"
+                app:layout_constraintEnd_toStartOf="@id/tvLocationAccuracy"
+                android:layout_marginStart="@dimen/spacing_sm" />
+
+            <!-- Accuracy badge -->
+            <TextView
+                android:id="@+id/tvLocationAccuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_location_accuracy"
+                android:textSize="@dimen/text_micro"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/status_success"
+                android:background="@drawable/bg_status_success"
+                android:paddingStart="@dimen/spacing_sm"
+                android:paddingEnd="@dimen/spacing_sm"
+                android:paddingTop="@dimen/spacing_xxs"
+                android:paddingBottom="@dimen/spacing_xxs"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- ===== SECTION: EMERGENCY TYPE QUICK CHIPS ===== -->
+
+    <TextView
+        android:id="@+id/tvEmergencyTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sos_type_label"
+        android:textSize="@dimen/text_micro"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/text_muted"
+        android:letterSpacing="0.08"
+        android:textAllCaps="true"
+        app:layout_constraintTop_toBottomOf="@id/cardLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:gravity="center" />
+
+    <!-- Emergency type chip row -->
+    <HorizontalScrollView
+        android:id="@+id/chipScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/spacing_sm"
+        app:layout_constraintTop_toBottomOf="@id/tvEmergencyTypeLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupEmergencyType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMedical"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_type_medical"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/rim_border"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFire"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_type_fire"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/rim_border"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCrime"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_type_crime"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/rim_border"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAccident"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_type_accident"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/rim_border"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipUnknown"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_type_unknown"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/rim_border"
+                app:chipStrokeWidth="1dp" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <!-- ===== SECTION: BOTTOM ACTIONS ===== -->
+
+    <!-- Cancel button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height_md"
+        android:text="@string/sos_btn_cancel"
+        android:textSize="@dimen/text_button"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/text_muted"
+        app:cornerRadius="@dimen/btn_radius"
+        app:strokeColor="@color/rim_border"
+        app:strokeWidth="1dp"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_xs"
+        android:layout_marginBottom="@dimen/spacing_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCallEmergency" />
+
+    <!-- Call emergency services button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCallEmergency"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height_md"
+        android:text="@string/sos_btn_call"
+        android:textSize="@dimen/text_button"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/card_mid"
+        app:cornerRadius="@dimen/btn_radius"
+        app:strokeColor="@color/rim_border"
+        app:strokeWidth="1dp"
+        app:icon="@drawable/ic_phone"
+        app:iconTint="@color/white"
+        app:iconGravity="textStart"
+        android:layout_marginStart="@dimen/spacing_xs"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        android:layout_marginBottom="@dimen/spacing_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCancel"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

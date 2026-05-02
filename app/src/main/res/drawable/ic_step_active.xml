@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pulsing circle for active step -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    <path
+        android:pathData="M18,4 A14,14 0 1 1 17.99,4 Z"
+        android:fillColor="#1AF39C12"
+        android:strokeColor="#F39C12"
+        android:strokeWidth="1.5" />
+    <path
+        android:pathData="M18,11 A7,7 0 1 1 17.99,11 Z"
+        android:fillColor="#F39C12" />
+</vector>

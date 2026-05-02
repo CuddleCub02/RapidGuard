@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 15: Download / Share Report Screen | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/downloadRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_radial"
+    tools:context=".DownloadReportActivity">
+
+    <!-- Grid overlay -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.04"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:paddingBottom="@dimen/spacing_xxl">
+
+            <!-- ===== TOP BAR ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/spacing_xxl">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:background="@drawable/bg_card_dark"
+                    android:contentDescription="@string/cd_back"
+                    android:padding="@dimen/spacing_sm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvScreenLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/download_label"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/sos_core_red"
+                    android:letterSpacing="0.12"
+                    android:textAllCaps="true"
+                    app:layout_constraintTop_toTopOf="@id/btnBack"
+                    app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                    app:layout_constraintStart_toEndOf="@id/btnBack"
+                    android:layout_marginStart="@dimen/spacing_md" />
+
+                <!-- Group badge -->
+                <TextView
+                    android:id="@+id/tvGroupBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/group_badge"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/text_muted"
+                    android:background="@drawable/bg_badge_dark"
+                    android:paddingStart="@dimen/spacing_sm"
+                    android:paddingEnd="@dimen/spacing_sm"
+                    android:paddingTop="@dimen/spacing_xxs"
+                    android:paddingBottom="@dimen/spacing_xxs"
+                    app:layout_constraintTop_toTopOf="@id/btnBack"
+                    app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Heading -->
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/download_heading"
+                android:textSize="@dimen/text_heading"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginTop="@dimen/spacing_lg" />
+
+            <TextView
+                android:id="@+id/tvSubheading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/download_subheading"
+                android:textSize="@dimen/text_body"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="@dimen/spacing_xs" />
+
+            <!-- Red divider -->
+            <View
+                android:layout_width="@dimen/divider_width"
+                android:layout_height="@dimen/divider_height"
+                android:background="@drawable/bg_red_divider"
+                android:layout_marginTop="@dimen/spacing_lg" />
+
+            <!-- ===== PDF PREVIEW CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPDFPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- PDF document illustration -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_lg">
+
+                        <!-- PDF icon -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="52dp"
+                            android:layout_height="64dp"
+                            app:cardBackgroundColor="#1AE63946"
+                            app:cardCornerRadius="@dimen/card_radius_sm"
+                            app:cardElevation="0dp"
+                            android:layout_marginEnd="@dimen/spacing_md">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_download"
+                                    android:contentDescription="@string/cd_pdf_icon" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/download_pdf_type"
+                                    android:textSize="@dimen/text_micro"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/sos_core_red"
+                                    android:layout_marginTop="@dimen/spacing_xxs" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Report meta info -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvReportTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/download_report_title"
+                                android:textSize="@dimen/text_caption"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tvReportRef"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/details_ref_number"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+
+                            <TextView
+                                android:id="@+id/tvReportDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/download_report_date"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+
+                            <TextView
+                                android:id="@+id/tvReportSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/download_report_size"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+
+                        </LinearLayout>
+
+                        <!-- Ready badge -->
+                        <TextView
+                            android:id="@+id/tvReadyBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/download_ready_badge"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/status_success"
+                            android:background="@drawable/bg_status_success"
+                            android:paddingStart="@dimen/spacing_sm"
+                            android:paddingEnd="@dimen/spacing_sm"
+                            android:paddingTop="@dimen/spacing_xxs"
+                            android:paddingBottom="@dimen/spacing_xxs" />
+
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/rim_border"
+                        android:layout_marginBottom="@dimen/spacing_lg" />
+
+                    <!-- Report summary rows -->
+
+                    <!-- Row: Type -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/download_summary_type"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tvSummaryType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_incident_type"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Row: Status -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/download_summary_status"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tvSummaryStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_status"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/status_success" />
+                    </LinearLayout>
+
+                    <!-- Row: Responder -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/download_summary_responder"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tvSummaryResponder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tracking_responder_name"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Row: Location -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/download_summary_location"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tvSummaryLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_location_value"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== USE CASE EXPLANATION CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardUseCase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/download_usecase_title"
+                        android:textSize="@dimen/text_caption"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/text_light"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <!-- Use case 1: Doctor -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            app:cardBackgroundColor="@color/card_inner_glow"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp"
+                            android:layout_marginEnd="@dimen/spacing_md">
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_incident_medical"
+                                android:contentDescription="@null" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_doctor_title"
+                                android:textSize="@dimen/text_caption"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_doctor_sub"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Use case 2: Police -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            app:cardBackgroundColor="@color/card_inner_glow"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp"
+                            android:layout_marginEnd="@dimen/spacing_md">
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_responders_chip"
+                                android:contentDescription="@null" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_police_title"
+                                android:textSize="@dimen/text_caption"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_police_sub"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Use case 3: Insurance -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            app:cardBackgroundColor="@color/card_inner_glow"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp"
+                            android:layout_marginEnd="@dimen/spacing_md">
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_reports_chip"
+                                android:contentDescription="@null" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_insurance_title"
+                                android:textSize="@dimen/text_caption"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/usecase_insurance_sub"
+                                android:textSize="@dimen/text_micro"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="@color/text_muted"
+                                android:layout_marginTop="@dimen/spacing_xxs" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== ACTION BUTTONS ===== -->
+
+            <!-- Download PDF -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownloadPDF"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_lg"
+                android:text="@string/download_btn_pdf"
+                android:textSize="@dimen/text_button"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/sos_core_red"
+                app:cornerRadius="@dimen/btn_radius"
+                app:icon="@drawable/ic_download"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <!-- Share button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShare"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_lg"
+                android:text="@string/download_btn_share"
+                android:textSize="@dimen/text_button"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/card_mid"
+                app:cornerRadius="@dimen/btn_radius"
+                app:strokeColor="@color/rim_border"
+                app:strokeWidth="1dp"
+                app:icon="@drawable/ic_share"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart"
+                android:layout_marginTop="@dimen/spacing_sm" />
+
+            <!-- Send to email button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendEmail"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_lg"
+                android:text="@string/download_btn_email"
+                android:textSize="@dimen/text_button"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/text_muted"
+                app:cornerRadius="@dimen/btn_radius"
+                app:strokeColor="@color/rim_border"
+                app:strokeWidth="1dp"
+                app:icon="@drawable/ic_email"
+                app:iconTint="@color/text_muted"
+                app:iconGravity="textStart"
+                android:layout_marginTop="@dimen/spacing_sm" />
+
+            <!-- ===== DISCLAIMER ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDisclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                app:cardBackgroundColor="#0A112244"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/spacing_md">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_shield_sos"
+                        android:contentDescription="@null"
+                        android:alpha="0.5"
+                        android:layout_marginEnd="@dimen/spacing_sm" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/download_disclaimer"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted"
+                        android:lineSpacingMultiplier="1.5"
+                        android:alpha="0.7" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

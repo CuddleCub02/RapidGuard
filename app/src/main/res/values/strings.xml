@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RapidGuard</string>
+
+    <string name="rapidguard_tagline">Fast emergency coordination when every second matters.</string>
+    <string name="welcome_title">Your safety starts here</string>
+    <string name="welcome_subtitle">Send emergency alerts quickly, stay connected, and access incident support with confidence.</string>
+    <string name="get_started">Get Started</string>
+    <string name="continue_label">Continue</string>
+
+    <string name="login_title">Welcome back</string>
+    <string name="login_subtitle">Sign in to manage alerts, saved contacts, and response history.</string>
+    <string name="email_label">Email address</string>
+    <string name="password_label">Password</string>
+    <string name="full_name_label">Full name</string>
+    <string name="confirm_password_label">Confirm password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="dont_have_account">Don’t have an account? Register</string>
+    <string name="sos_without_login_note">You can still send an SOS without logging in.</string>
+
+    <string name="register_title">Create your RapidGuard account</string>
+    <string name="register_subtitle">Set up a secure profile for faster future emergency support.</string>
+
+    <string name="forgot_title">Reset your password</string>
+    <string name="forgot_subtitle">Enter your email and we’ll send a secure reset link.</string>
+    <string name="send_reset_link">Send Reset Link</string>
+    <string name="reset_info">A password reset link will be sent to your registered email.</string>
+
+    <string name="post_sos_title">Your emergency report was sent</string>
+    <string name="post_sos_subtitle">Enter your email to receive your incident report and complete your account for easier future access.</string>
+    <string name="receive_report">Receive Incident Report</string>
+    <string name="skip_for_now">Skip for now</string>
+
+    <string name="security_notice_title">Secure access</string>
+    <string name="security_notice_body">Your details are protected to support safe emergency communication.</string>
+
+    <string name="hint_email_example">name@example.com</string>
+    <string name="hint_password_example">Enter your password</string>
+    <string name="hint_full_name_example">Enter your full name</string>
+    <string name="hint_confirm_password_example">Re-enter your password</string>
+
+    <!-- Screen 2: Login -->
+    <string name="login_label">Sign In</string>
+    <string name="login_heading">Welcome\nback.</string>
+    <string name="login_subheading">Log in to access your incident history and reports</string>
+    <string name="hint_email">Email address</string>
+    <string name="hint_password">Password</string>
+    <string name="login_forgot_password">Forgot password?</string>
+    <string name="btn_login_action">Log In</string>
+    <string name="or_divider">or</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_register_link">Register</string>
+    <string name="sos_shortcut_title">Need emergency help?</string>
+    <string name="sos_shortcut_sub">No account needed — send SOS now</string>
+    <string name="btn_sos_short">SOS</string>
+    <string name="cd_back">Go back</string>
+    <string name="cd_sos_shortcut">Emergency SOS shortcut</string>
+
+    <string name="error_email_required">Email is required</string>
+    <string name="error_email_invalid">Enter a valid email address</string>
+    <string name="error_password_required">Password is required</string>
+
+    <!-- Screen 3: Register -->
+    <string name="register_label">Create Account</string>
+    <string name="register_heading">Join\nRapidGuard.</string>
+    <string name="register_subheading">Create your account to track incidents and access reports</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone">Phone number</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="register_terms">I agree to the Terms of Service and Privacy Policy</string>
+    <string name="btn_register">Create Account</string>
+    <string name="register_have_account">Already have an account?</string>
+    <string name="register_login_link">Log In</string>
+
+    <!-- Password strength labels -->
+    <string name="strength_weak">Weak</string>
+    <string name="strength_medium">Medium</string>
+    <string name="strength_strong">Strong</string>
+    <string name="strength_very_strong">Very Strong</string>
+
+    <!-- Validation errors -->
+    <string name="error_name_required">Full name is required</string>
+    <string name="error_phone_required">Phone number is required</string>
+    <string name="error_phone_invalid">Enter a valid phone number</string>
+    <string name="error_confirm_password_required">Please confirm your password</string>
+    <string name="error_passwords_no_match">Passwords do not match</string>
+    <string name="error_terms_required">You must accept the Terms of Service</string>
+    <string name="error_password_too_short">Password must be at least 8 characters</string>
+
+    <!-- Screen 4: Forgot Password -->
+    <string name="forgot_label">Reset Password</string>
+    <string name="forgot_heading">Forgot your\npassword?</string>
+    <string name="forgot_subheading">Enter your email and we\'ll send you a link to reset your password</string>
+    <string name="btn_send_reset">Send Reset Link</string>
+
+    <!-- Success state -->
+    <string name="forgot_success_title">Reset link sent!</string>
+    <string name="forgot_success_message">Check your inbox. If an account exists for that email, you\'ll receive a reset link within a few minutes.</string>
+    <string name="forgot_resend_timer">Resend available in 60s</string>
+    <string name="forgot_resend_link">Resend reset email</string>
+
+    <!-- Tips -->
+    <string name="forgot_tips_title">Didn\'t receive the email?</string>
+    <string name="forgot_tip_1">Check your spam or junk mail folder</string>
+    <string name="forgot_tip_2">Make sure you entered the correct email address</string>
+    <string name="forgot_tip_3">The link expires after 30 minutes — request a new one if needed</string>
+
+    <!-- Navigation -->
+    <string name="forgot_back_to_login">Back to Login</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_lock_illustration">Forgot password lock illustration</string>
+    <string name="cd_success_icon">Email sent successfully</string>
+    <!-- Screen 5: Home Dashboard -->
+    <string name="home_avatar_initial">J</string>
+    <string name="home_greeting">Good morning,</string>
+    <string name="home_user_name">James Dlamini</string>
+    <string name="cd_notifications">Notifications</string>
+
+    <!-- Risk card -->
+    <string name="home_risk_label">Current Area Risk</string>
+    <string name="home_risk_level">Moderate Risk</string>
+    <string name="home_risk_description">2 incidents reported\nnearby in the last 24h</string>
+    <string name="home_risk_badge">MODERATE</string>
+    <string name="cd_risk_gauge">Risk level gauge</string>
+
+    <!-- SOS -->
+    <string name="btn_sos_text">SOS</string>
+    <string name="home_sos_hint">Emergency Alert</string>
+    <string name="home_sos_sub">Tap to send</string>
+
+    <!-- Quick actions -->
+    <string name="home_quick_actions">Quick Actions</string>
+    <string name="quick_report">Report Incident</string>
+    <string name="quick_report_sub">Log an emergency</string>
+    <string name="quick_nearby">Nearby Services</string>
+    <string name="quick_nearby_sub">Police, hospital, fire</string>
+    <string name="quick_history">Incident History</string>
+    <string name="quick_history_sub">Past reports</string>
+    <string name="quick_tips">Safety Tips</string>
+    <string name="quick_tips_sub">AI risk heatmap</string>
+    <string name="cd_report_icon">Report incident icon</string>
+    <string name="cd_nearby_icon">Nearby services icon</string>
+    <string name="cd_history_icon">Incident history icon</string>
+    <string name="cd_tips_icon">Safety tips icon</string>
+
+    <!-- Recent incident -->
+    <string name="home_recent_label">Recent Activity</string>
+    <string name="home_view_all">View all</string>
+    <string name="recent_incident_type">Medical Emergency</string>
+    <string name="recent_incident_datetime">Today, 07:14 AM</string>
+    <string name="recent_incident_status">Resolved</string>
+    <string name="cd_incident_type">Incident type icon</string>
+
+    <!-- Bottom nav -->
+    <string name="nav_home">Home</string>
+    <string name="nav_incidents">Incidents</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_tips">Tips</string>
+    <string name="nav_profile">Profile</string>
+    <!-- Screen 6: SOS Emergency -->
+    <string name="sos_no_login_badge">No login needed</string>
+    <string name="sos_heading">Emergency\nAlert</string>
+    <string name="sos_instruction">Tap and hold the SOS button to send\nan emergency alert with your location</string>
+    <string name="sos_hold_hint">Hold 3s</string>
+
+    <!-- Location status -->
+    <string name="sos_location_acquiring">Acquiring GPS location…</string>
+    <string name="sos_location_sub">Your coordinates will be shared with responders</string>
+    <string name="sos_location_accuracy">±5m accuracy</string>
+
+    <!-- Emergency type chips -->
+    <string name="sos_type_label">Select emergency type</string>
+    <string name="chip_type_medical">Medical</string>
+    <string name="chip_type_fire">Fire</string>
+    <string name="chip_type_crime">Crime</string>
+    <string name="chip_type_accident">Accident</string>
+    <string name="chip_type_unknown">Unknown</string>
+
+    <!-- Buttons -->
+    <string name="sos_btn_cancel">Cancel</string>
+    <string name="sos_btn_call">Call 10111</string>
+
+    <!-- Toasts / feedback -->
+    <string name="sos_sending">Sending SOS alert…</string>
+    <string name="sos_sent">Alert sent! Help is on the way.</string>
+    <string name="sos_cancelled">SOS cancelled</string>
+
+    <!-- Greetings (used in HomeActivity) -->
+    <string name="greeting_morning">Good morning,</string>
+    <string name="greeting_afternoon">Good afternoon,</string>
+    <string name="greeting_evening">Good evening,</string>
+    <string name="sos_location_locked">Location locked — -29.8587° S, 31.0218° E</string>
+    <!-- Screen 8: Post-SOS Email Capture -->
+    <string name="email_capture_step">Step 2 of 2</string>
+    <string name="email_capture_label">Incident Report</string>
+    <string name="email_capture_heading">Get your\nincident report</string>
+    <string name="email_capture_explanation">Your emergency alert was sent successfully.\nEnter your email to receive a full incident\nreport you can share with doctors, police,\nor your insurance provider.</string>
+
+    <!-- Incident context card -->
+    <string name="email_capture_alert_sent">Emergency alert sent</string>
+    <string name="email_capture_alert_sub">Responders notified · Location shared</string>
+
+    <!-- Input -->
+    <string name="email_capture_input_label">Your email address</string>
+    <string name="email_capture_receive_note">You\'ll receive your incident report, reference number, and responder updates</string>
+
+    <!-- Buttons -->
+    <string name="email_capture_btn_send">Send report to my email</string>
+
+    <!-- Account creation card -->
+    <string name="email_capture_account_title">Finish creating your account</string>
+    <string name="email_capture_benefit_1">Track all your past and live incidents</string>
+    <string name="email_capture_benefit_2">Download reports anytime</string>
+    <string name="email_capture_benefit_3">Get AI-powered safety alerts for your area</string>
+    <string name="email_capture_btn_finish_account">Finish creating account</string>
+
+    <!-- Skip -->
+    <string name="email_capture_skip">Skip for now</string>
+    <string name="email_capture_privacy_note">Your email is only used to send your incident\nreport. We never share your data.</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_email_icon">Email icon</string>
+    <string name="email_capture_report_sent">Report sent to %1$s</string>
+    <!-- Screen 9: Emergency Reporting -->
+    <string name="report_label">Report Incident</string>
+    <string name="report_heading">Tell us what\nhappened.</string>
+    <string name="report_subheading">Provide details to help responders assist you faster</string>
+
+    <!-- Type section -->
+    <string name="report_type_label">Emergency type</string>
+    <string name="report_type_hint">Select one that best describes the situation</string>
+
+    <!-- Description -->
+    <string name="report_description_label">Description</string>
+    <string name="report_description_hint">Describe what is happening, how many people are involved, any hazards present…</string>
+
+    <!-- Media -->
+    <string name="report_media_label">Evidence (optional)</string>
+    <string name="report_voice_title">Voice note</string>
+    <string name="report_voice_sub">Tap to record</string>
+    <string name="report_image_title">Photo / video</string>
+    <string name="report_image_sub">Tap to upload</string>
+    <string name="report_recording">Recording… 0:00</string>
+
+    <!-- Location -->
+    <string name="report_location_label">Your location</string>
+    <string name="report_location_address">Durban CBD, KwaZulu-Natal</string>
+    <string name="report_location_coords">-29.8587° S, 31.0218° E · ±5m accuracy</string>
+
+    <!-- Severity -->
+    <string name="report_severity_label">Severity level</string>
+    <string name="severity_low">Low</string>
+    <string name="severity_medium">Medium</string>
+    <string name="severity_high">High</string>
+    <string name="severity_critical">Critical</string>
+
+    <!-- Actions -->
+    <string name="report_btn_submit">Submit incident details</string>
+    <string name="report_save_draft">Save as draft</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_voice_note">Record voice note</string>
+    <string name="cd_upload_image">Upload photo or video</string>
+    <string name="cd_stop_recording">Stop recording</string>
+    <string name="cd_refresh_location">Refresh location</string>
+    <string name="report_location_refreshing">Refreshing location…</string>
+    <string name="report_draft_saved">Draft saved</string>
+    <string name="report_voice_saved">Voice note saved</string>
+    <string name="report_recording_error">Could not start recording</string>
+    <string name="report_recording_time">Recording… %1$d:%2$02d</string>
+    <string name="report_error_type">Please select an emergency type</string>
+    <string name="report_error_description">Please describe what happened</string>
+    <string name="report_submitted">Incident details submitted</string>
+    <!-- Screen 10: Live Incident Tracking -->
+    <string name="tracking_live_badge">Live</string>
+    <string name="tracking_map_loading">Loading live map…</string>
+    <string name="tracking_status_label">Incident status</string>
+    <string name="tracking_responder_label">Assigned responder</string>
+
+    <!-- Status steps -->
+    <string name="step_reported_title">Reported</string>
+    <string name="step_reported_sub">Alert received by system</string>
+    <string name="step_acknowledged_title">Acknowledged</string>
+    <string name="step_acknowledged_sub">Responder assigned to incident</string>
+    <string name="step_in_progress_title">In Progress</string>
+    <string name="step_in_progress_sub">Responder en route to location</string>
+    <string name="step_resolved_title">Resolved</string>
+    <string name="step_resolved_sub">Awaiting resolution</string>
+
+    <!-- Responder card -->
+    <string name="tracking_responder_initial">KM</string>
+    <string name="tracking_responder_name">Sgt. K. Mthembu</string>
+    <string name="tracking_responder_role">Emergency Medical Responder</string>
+    <string name="tracking_responder_unit">Unit 7 · Durban Metro EMS</string>
+    <string name="tracking_responder_badge">EN ROUTE</string>
+
+    <!-- ETA metrics -->
+    <string name="tracking_eta_label">ETA</string>
+    <string name="tracking_eta_value">~6 min</string>
+    <string name="tracking_distance_label">Distance</string>
+    <string name="tracking_distance_value">2.3 km</string>
+    <string name="tracking_speed_label">Status</string>
+    <string name="tracking_speed_value">Moving</string>
+
+    <!-- Buttons -->
+    <string name="tracking_btn_contact">Contact responder</string>
+    <string name="tracking_btn_share_location">Share updated location</string>
+    <string name="tracking_btn_add_details">Add more details</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_map_placeholder">Live incident map</string>
+    <string name="tracking_eta_arrived">Arrived</string>
+    <!-- Screen 11: Incident History -->
+    <string name="history_title">Incident History</string>
+    <string name="history_search_hint">Search incidents…</string>
+
+    <!-- Filter chips -->
+    <string name="filter_all">All</string>
+    <string name="filter_resolved">Resolved</string>
+
+    <!-- Stats row -->
+    <string name="stats_total_label">Total</string>
+    <string name="stats_total_value">12</string>
+    <string name="stats_resolved_label">Resolved</string>
+    <string name="stats_resolved_value">9</string>
+    <string name="stats_active_label">Active</string>
+    <string name="stats_active_value">1</string>
+
+    <!-- Empty state -->
+    <string name="history_empty_title">No incidents yet</string>
+    <string name="history_empty_sub">Your reported incidents will appear here once you send your first SOS or report</string>
+    <string name="history_empty_btn">Report an incident</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_filter">Filter incidents</string>
+    <string name="cd_empty_history">No incident history</string>
+    <!-- Screen 12: Incident Details -->
+    <string name="details_label">Incident Details</string>
+    <string name="details_incident_type">Medical Emergency</string>
+    <string name="details_ref_number">REF: #RG-84721</string>
+    <string name="details_status">Resolved</string>
+    <string name="details_risk_level">High Risk</string>
+
+    <!-- Info section -->
+    <string name="details_section_info">Incident Information</string>
+    <string name="details_datetime_label">Date &amp; Time</string>
+    <string name="details_datetime_value">Today, 09:41 AM</string>
+    <string name="details_location_label">Location</string>
+    <string name="details_location_value">Durban CBD, KZN</string>
+    <string name="details_severity_label">Severity</string>
+    <string name="details_severity_value">High</string>
+
+    <!-- Description section -->
+    <string name="details_section_description">Description</string>
+    <string name="details_description_value">Patient was found unconscious at the scene. Bystanders reported the individual collapsed suddenly with no prior warning. Scene was secured and CPR was administered by a witness before responders arrived.</string>
+
+    <!-- Responder notes -->
+    <string name="details_section_responder_notes">Responder Notes</string>
+    <string name="details_notes_time">09:53 AM</string>
+    <string name="details_responder_notes_value">Patient stabilised on arrival. Vitals checked — BP 120/80, pulse 72bpm. Transported to Addington Hospital for further observation. Case closed at 10:15 AM.</string>
+
+    <!-- Evidence -->
+    <string name="details_section_evidence">Evidence &amp; Attachments</string>
+    <string name="details_evidence_placeholder">2 photos · 1 voice note attached</string>
+
+    <!-- Buttons -->
+    <string name="details_btn_download">Download PDF report</string>
+    <string name="details_btn_share">Share report</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_share">Share incident report</string>
+    <string name="cd_evidence_photo">Evidence photo</string>
+    <string name="share_subject">RapidGuard Incident Report</string>
+    <string name="share_body">My RapidGuard incident report (%1$s) is available for review. Please contact me for the full PDF report.</string>
+    <string name="share_chooser_title">Share report via</string>
+    <!-- Screen 13: Nearby Services -->
+    <string name="nearby_map_label">Nearby Services</string>
+    <string name="nearby_section_label">Services near you</string>
+    <string name="nearby_result_count">4 results found</string>
+
+    <!-- Service type chips -->
+    <string name="nearby_police">Police</string>
+    <string name="nearby_hospital">Hospital</string>
+    <string name="nearby_fire">Fire Station</string>
+    <string name="nearby_ems">EMS</string>
+
+    <!-- Service card buttons -->
+    <string name="nearby_btn_call">Call</string>
+    <string name="nearby_btn_directions">Directions</string>
+
+    <!-- Service names (seeded data) -->
+    <string name="service_police_name">Durban Central Police</string>
+    <string name="service_police_address">191 Stanger St, Durban CBD</string>
+    <string name="service_police_hours">Open 24 hours</string>
+    <string name="service_police_distance">0.8 km</string>
+    <string name="service_police_number">tel:0313014000</string>
+
+    <string name="service_hospital_name">Addington Hospital</string>
+    <string name="service_hospital_address">Erskine Terrace, South Beach</string>
+    <string name="service_hospital_hours">Open 24 hours</string>
+    <string name="service_hospital_distance">1.4 km</string>
+    <string name="service_hospital_number">tel:0313271000</string>
+
+    <string name="service_fire_name">Durban Fire Station</string>
+    <string name="service_fire_address">Old Fort Rd, Durban CBD</string>
+    <string name="service_fire_hours">Open 24 hours</string>
+    <string name="service_fire_distance">2.1 km</string>
+    <string name="service_fire_number">tel:0313613333</string>
+
+    <string name="service_ems_name">Durban Metro EMS</string>
+    <string name="service_ems_address">Warwick Ave, Warwick Junction</string>
+    <string name="service_ems_hours">Open 24 hours</string>
+    <string name="service_ems_distance">2.7 km</string>
+    <string name="service_ems_number">tel:10177</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_service_icon">Emergency service icon</string>
+    <!-- Screen 14: Safety Tips + AI Risk Heatmap -->
+    <string name="tips_label">Safety Intelligence</string>
+    <string name="tips_heading">AI Safety\nAwareness</string>
+    <string name="tips_subheading">Real-time risk analysis and safety guidance for your area</string>
+    <string name="tips_last_updated">Updated 5 min ago</string>
+
+    <!-- AI Risk card -->
+    <string name="tips_ai_chip">AI Risk Analysis</string>
+    <string name="tips_risk_level_heading">Moderate Risk</string>
+    <string name="tips_risk_description">2 incidents reported within 2km in the last 24 hours. Exercise caution in the CBD area after dark.</string>
+    <string name="tips_risk_score">62</string>
+    <string name="tips_risk_score_label">/100</string>
+    <string name="tips_trend_incidents">2</string>
+    <string name="tips_trend_incidents_label">Incidents nearby</string>
+    <string name="tips_trend_change">+18%</string>
+    <string name="tips_trend_change_label">vs last week</string>
+    <string name="tips_trend_radius">2 km</string>
+    <string name="tips_trend_radius_label">Radius</string>
+
+    <!-- Heatmap -->
+    <string name="tips_heatmap_label">Risk Heatmap</string>
+    <string name="tips_heatmap_title">AI Heatmap</string>
+    <string name="tips_heatmap_sub">Durban CBD · Live</string>
+    <string name="tips_high_risk_area">High-risk zone detected nearby</string>
+
+    <!-- Legend -->
+    <string name="legend_high">High risk</string>
+    <string name="legend_moderate">Moderate risk</string>
+    <string name="legend_low">Low risk</string>
+
+    <!-- Tips section -->
+    <string name="tips_section_label">Safety Tips</string>
+
+    <!-- Individual tip data -->
+    <string name="tip1_category">Personal Safety</string>
+    <string name="tip1_title">Stay aware of your surroundings at night</string>
+    <string name="tip1_body">Avoid walking alone after dark in high-risk areas. Keep your phone charged and share your location with a trusted contact when travelling at night.</string>
+
+    <string name="tip2_category">Emergency Preparedness</string>
+    <string name="tip2_title">Know your nearest emergency services</string>
+    <string name="tip2_body">Save the numbers for your nearest police station, hospital, and EMS unit. RapidGuard\'s Nearby Services screen can locate them instantly.</string>
+
+    <string name="tip3_category">Crime Prevention</string>
+    <string name="tip3_title">Do not display valuables in public</string>
+    <string name="tip3_body">Keep phones, wallets, and jewellery out of sight in crowded areas. If you feel unsafe, move to a well-lit public space and contact emergency services.</string>
+
+    <string name="tip4_category">Medical Emergency</string>
+    <string name="tip4_title">Learn basic first aid and CPR</string>
+    <string name="tip4_body">Knowing how to perform CPR or stop bleeding can save a life before professional help arrives. Consider attending a first aid course in your area.</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_tip_icon">Safety tip icon</string>
+    <!-- Screen 15: Download / Share Report -->
+    <string name="download_label">Incident Report</string>
+    <string name="download_heading">Download\nyour report.</string>
+    <string name="download_subheading">Your full incident report is ready. Use it for medical, legal, or insurance purposes.</string>
+
+    <!-- PDF preview card -->
+    <string name="download_pdf_type">PDF</string>
+    <string name="download_report_title">RapidGuard Incident Report</string>
+    <string name="download_report_date">Generated: Today, 10:15 AM</string>
+    <string name="download_report_size">File size: 284 KB</string>
+    <string name="download_ready_badge">Ready</string>
+
+    <!-- Summary rows -->
+    <string name="download_summary_type">Emergency type</string>
+    <string name="download_summary_status">Status</string>
+    <string name="download_summary_responder">Responder</string>
+    <string name="download_summary_location">Location</string>
+
+    <!-- Use cases -->
+    <string name="download_usecase_title">This report can be used for</string>
+    <string name="usecase_doctor_title">Medical provider</string>
+    <string name="usecase_doctor_sub">Share with your doctor or hospital for follow-up care and records</string>
+    <string name="usecase_police_title">Police &amp; legal proceedings</string>
+    <string name="usecase_police_sub">Submit as evidence for an official case or insurance claim</string>
+    <string name="usecase_insurance_title">Insurance claim</string>
+    <string name="usecase_insurance_sub">Attach to your claim as verified proof of the incident and response</string>
+
+    <!-- Buttons -->
+    <string name="download_btn_pdf">Download PDF report</string>
+    <string name="download_btn_share">Share report</string>
+    <string name="download_btn_email">Send to email</string>
+
+    <!-- Disclaimer -->
+    <string name="download_disclaimer">This report is generated from data captured during your emergency incident. RapidGuard Group 41. All data is encrypted and stored securely.</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_pdf_icon">PDF report icon</string>
+    <string name="download_toast_started">Download started. Check your notifications.</string>
+    <string name="download_toast_error">Download failed. Please try again.</string>
+    <string name="download_no_email_app">No email app found on this device.</string>
+
+</resources>
+

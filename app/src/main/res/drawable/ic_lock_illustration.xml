@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Padlock with glow ring — used as screen illustration -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="88dp"
+    android:height="88dp"
+    android:viewportWidth="88"
+    android:viewportHeight="88">
+
+    <!-- Outer glow ring -->
+    <path
+        android:pathData="M44,4 A40,40 0 1 1 43.99,4 Z"
+        android:fillColor="#0D1B3D"
+        android:strokeColor="#1A3A6E"
+        android:strokeWidth="1" />
+
+    <!-- Inner ring -->
+    <path
+        android:pathData="M44,14 A30,30 0 1 1 43.99,14 Z"
+        android:fillColor="#112244"
+        android:strokeColor="#1A3A6E"
+        android:strokeWidth="0.5" />
+
+    <!-- Lock body -->
+    <path
+        android:pathData="M30,46 L58,46 L58,64 A4,4 0 0 1 54,68 L34,68 A4,4 0 0 1 30,64 Z"
+        android:fillColor="#0A1628"
+        android:strokeColor="#E63946"
+        android:strokeWidth="1.5" />
+
+    <!-- Lock shackle -->
+    <path
+        android:pathData="M34,46 L34,38 A10,10 0 0 1 54,38 L54,46"
+        android:fillColor="#00000000"
+        android:strokeColor="#E63946"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+
+    <!-- Keyhole -->
+    <path
+        android:pathData="M44,54 A3,3 0 1 1 43.99,54 Z"
+        android:fillColor="#E63946" />
+    <path
+        android:pathData="M44,57 L44,62"
+        android:strokeColor="#E63946"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+</vector>

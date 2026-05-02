@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Radial-feel background: navy core fading to near-black edges -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="120%"
+        android:startColor="#0D1B3D"
+        android:centerColor="#060E20"
+        android:endColor="#03070F"
+        android:angle="270" />
+</shape>

@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RapidGuard | Screen 12: Incident Details Screen | Group 41 -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_radial"
+    tools:context=".IncidentDetailsActivity">
+
+    <!-- Grid overlay -->
+    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_grid_overlay"
+        android:alpha="0.04"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:paddingBottom="@dimen/spacing_xxl">
+
+            <!-- ===== TOP BAR ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/spacing_xxl">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:background="@drawable/bg_card_dark"
+                    android:contentDescription="@string/cd_back"
+                    android:padding="@dimen/spacing_sm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvScreenLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details_label"
+                    android:textSize="@dimen/text_micro"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/sos_core_red"
+                    android:letterSpacing="0.12"
+                    android:textAllCaps="true"
+                    app:layout_constraintTop_toTopOf="@id/btnBack"
+                    app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                    app:layout_constraintStart_toEndOf="@id/btnBack"
+                    android:layout_marginStart="@dimen/spacing_md" />
+
+                <!-- Share button -->
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_share"
+                    android:background="@drawable/bg_card_dark"
+                    android:contentDescription="@string/cd_share"
+                    android:padding="@dimen/spacing_sm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== HERO STATUS CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardHeroStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Incident type icon -->
+                    <ImageView
+                        android:id="@+id/ivIncidentTypeIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_incident_medical"
+                        android:background="@drawable/bg_icon_circle_red"
+                        android:padding="@dimen/spacing_md"
+                        android:contentDescription="@string/cd_incident_type"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <!-- Incident type + ref -->
+                    <TextView
+                        android:id="@+id/tvIncidentType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_incident_type"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toTopOf="@id/ivIncidentTypeIcon"
+                        app:layout_constraintStart_toEndOf="@id/ivIncidentTypeIcon"
+                        app:layout_constraintEnd_toStartOf="@id/tvStatusBadge"
+                        android:layout_marginStart="@dimen/spacing_md" />
+
+                    <TextView
+                        android:id="@+id/tvRefNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_ref_number"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted"
+                        app:layout_constraintTop_toBottomOf="@id/tvIncidentType"
+                        app:layout_constraintStart_toEndOf="@id/ivIncidentTypeIcon"
+                        app:layout_constraintEnd_toStartOf="@id/tvStatusBadge"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_marginTop="@dimen/spacing_xxs" />
+
+                    <!-- Status badge -->
+                    <TextView
+                        android:id="@+id/tvStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_status"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/status_success"
+                        android:background="@drawable/bg_status_success"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingTop="@dimen/spacing_xxs"
+                        android:paddingBottom="@dimen/spacing_xxs"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Risk level badge -->
+                    <TextView
+                        android:id="@+id/tvRiskBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_risk_level"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/status_danger"
+                        android:background="@drawable/bg_status_danger"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingTop="@dimen/spacing_xxs"
+                        android:paddingBottom="@dimen/spacing_xxs"
+                        app:layout_constraintTop_toBottomOf="@id/tvStatusBadge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/spacing_xs" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== DETAILS INFO CARD ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_section_info"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_light"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Date / Time row -->
+                    <LinearLayout
+                        android:id="@+id/rowDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/spacing_md">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_eta"
+                            android:contentDescription="@null"
+                            android:layout_marginEnd="@dimen/spacing_md" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/details_datetime_label"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+
+                        <TextView
+                            android:id="@+id/tvDateTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_datetime_value"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/rim_border"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <!-- Location row -->
+                    <LinearLayout
+                        android:id="@+id/rowLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/spacing_md">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_map_pin"
+                            android:contentDescription="@null"
+                            android:layout_marginEnd="@dimen/spacing_md" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/details_location_label"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_location_value"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/rim_border"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <!-- Severity row -->
+                    <LinearLayout
+                        android:id="@+id/rowSeverity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_risk_gauge"
+                            android:contentDescription="@null"
+                            android:layout_marginEnd="@dimen/spacing_md" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/details_severity_label"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+
+                        <TextView
+                            android:id="@+id/tvSeverity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_severity_value"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/status_danger" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== DESCRIPTION CARD ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_section_description"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_light"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details_description_value"
+                    android:textSize="@dimen/text_caption"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_light"
+                    android:lineSpacingMultiplier="1.6"
+                    android:padding="@dimen/spacing_lg" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== RESPONDER NOTES CARD ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_section_responder_notes"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_light"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardResponderNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Responder info row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            app:cardBackgroundColor="@color/card_inner_glow"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp"
+                            android:layout_marginEnd="@dimen/spacing_md">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/tracking_responder_initial"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="@color/white"
+                                android:gravity="center" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/tracking_responder_name"
+                            android:textSize="@dimen/text_caption"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_notes_time"
+                            android:textSize="@dimen/text_micro"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/text_muted" />
+
+                    </LinearLayout>
+
+                    <!-- Note text -->
+                    <TextView
+                        android:id="@+id/tvResponderNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_responder_notes_value"
+                        android:textSize="@dimen/text_caption"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted"
+                        android:lineSpacingMultiplier="1.6"
+                        android:background="@drawable/bg_input_rounded"
+                        android:padding="@dimen/spacing_md" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== EVIDENCE / MEDIA CARD ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_section_evidence"
+                android:textSize="@dimen/text_caption"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_light"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardEvidence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="@dimen/card_radius_md"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Evidence placeholder grid -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <!-- Photo placeholder 1 -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="@dimen/spacing_xs"
+                            android:background="@drawable/bg_card_dark">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_camera"
+                                android:contentDescription="@string/cd_evidence_photo"
+                                android:alpha="0.3" />
+                        </FrameLayout>
+
+                        <!-- Photo placeholder 2 -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="@dimen/spacing_xs"
+                            android:background="@drawable/bg_card_dark">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_camera"
+                                android:contentDescription="@string/cd_evidence_photo"
+                                android:alpha="0.3" />
+                        </FrameLayout>
+
+                        <!-- Voice note placeholder -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_card_dark">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_microphone"
+                                android:contentDescription="@string/cd_voice_note"
+                                android:alpha="0.3" />
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_evidence_placeholder"
+                        android:textSize="@dimen/text_micro"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/text_muted" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== DOWNLOAD REPORT BUTTON ===== -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownloadReport"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_lg"
+                android:text="@string/details_btn_download"
+                android:textSize="@dimen/text_button"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/sos_core_red"
+                app:cornerRadius="@dimen/btn_radius"
+                app:icon="@drawable/ic_download"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart"
+                android:layout_marginTop="@dimen/spacing_xl" />
+
+            <!-- Share report button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShareReport"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_lg"
+                android:text="@string/details_btn_share"
+                android:textSize="@dimen/text_button"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/text_muted"
+                app:cornerRadius="@dimen/btn_radius"
+                app:strokeColor="@color/rim_border"
+                app:strokeWidth="1dp"
+                app:icon="@drawable/ic_share"
+                app:iconTint="@color/text_muted"
+                app:iconGravity="textStart"
+                android:layout_marginTop="@dimen/spacing_sm" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
